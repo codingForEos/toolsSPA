@@ -1,0 +1,59 @@
+.RightSide{
+    position: relative;
+    height: 100%;
+    .HeaderMenu{
+        $height:60px;
+        height: $height;
+        line-height: $height;
+        position: relative;
+        border-bottom:30px solid rgb(250, 250, 231);
+        .bar{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            padding-left: 20px;
+            i{
+                font-size: 25px;
+            }
+        }
+        .user{
+            position: absolute;
+            right: 0px;
+            top:0px;
+            width: 80px;
+            display: flex;
+            div{
+                flex:1;
+                i{
+                    font-size: 25px;
+                }
+            }
+            h5{
+                flex:1;
+                font-size: 16px;
+            }
+        }
+    }
+    .content{
+    }
+    .FooterBar{
+        $height:45px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        height: $height;
+        line-height: $height;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        font-size: 16px;
+        background-color:  rgb(250, 250, 231);
+        color: rgb(226, 196, 150);
+        .message{
+            flex: 1;
+        }
+        .time{
+            flex: 1;
+        }
+    }
+}

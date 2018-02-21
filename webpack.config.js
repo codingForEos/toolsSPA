@@ -13,7 +13,9 @@ module.exports={
     },
     module: {
         rules: [
-            { test: /\.js$/, exclude: [path.resolve(__dirname, './node_modules')], include: [path.resolve(__dirname, './src')],loader: "babel-loader" }
+            { test: /\.js$/, exclude: [path.resolve(__dirname, './node_modules')], include: [path.resolve(__dirname, './src')],loader: "babel-loader" },
+            { test: /\.scss$/, exclude: [path.resolve(__dirname, './node_modules')], include: [path.resolve(__dirname, './src')],loader: "style-loader!css-loader!sass-loader" },
+            { test: /\.css$/, exclude: [path.resolve(__dirname, './node_modules')], include: [path.resolve(__dirname, './src')], loader: "style-loader!css-loader" }
         ]
     },
     plugins:[

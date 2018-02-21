@@ -1,0 +1,93 @@
+.todoList{
+    color: red;
+    width: 80%;
+    margin: 100px auto;
+    user-select: none;
+    background-color: rgb(250, 248, 248);
+}
+.HeaderFillter{
+    $height:50px;
+    height: $height;
+    line-height: $height;
+    font-size: 15px;
+    color: black;
+    display: flex;
+    .allTask{
+        flex:1;
+        text-align: center;
+    }
+    .waitTask{
+        flex:1;
+        text-align: center;
+    }
+    .finishTask{
+        flex:1;
+        text-align: center;
+    }
+}
+.TodosList{
+    margin: 0px auto;
+    width: 90%;
+    .Todos{
+        $height:50px;
+        height: $height;
+        line-height: $height;
+        width: 100%;
+        border:1px solid rgb(204, 203, 203);
+        color: rgb(102, 102, 102);
+        background-color: white;
+        display: flex;
+        font-size: 13px;
+        border-radius: 8px;
+        margin-bottom: 1px;
+        .item{
+            flex:9;
+            i{
+                padding: 1px;
+                margin-left: 16px;
+                margin-right: 10px;
+                font-size: 8px;
+                color: white;
+                border-radius: 5px;
+                border: 1px solid #BBB;
+                background-color: rgb(217, 250, 239);
+            }
+            span{
+                text-decoration-color: black;
+            }
+        }
+        .delete{
+            flex:1;
+            padding-right: 10px;
+        }
+    }
+}
+.AddTask{
+    $height:36px;
+    width: 100%;
+    padding:10px 0 10px 0px;
+    .wrap{
+        font-size: 13px;
+        height: $height;
+        width: 90%;
+        margin: 5px auto;
+        background-color: rgb(250, 248, 248);
+        .input{
+            height: $height;
+            width: 84%;
+            margin-right: 1%;
+            border: 1px solid  rgb(204, 203, 203);
+            border-radius: 5px;
+            padding-left: 10px;
+            outline: none;
+        }
+        .button{
+            height: $height;
+            color: white;
+            width:15%;
+            border-radius: 5px;
+            background-color: rgb(188, 253, 231);
+            outline: none;
+        }
+    }
+}

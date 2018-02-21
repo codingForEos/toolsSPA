@@ -1,0 +1,79 @@
+.LeftSide{
+    user-select: none
+}
+
+.Menubar{
+    div{
+        position: relative;
+        div{
+            font-size:15px;
+            $height: 40px;
+            height: $height;
+            display: flex;
+            .MenuListLogo{
+                padding-left:25px;
+                padding-right: 10px;
+                line-height: $height;
+            }
+            .MenuListName{
+                line-height: $height;
+                text-align: left;
+                flex:1;
+            }
+            .MenuListTip{
+                padding-right: 10px;
+                line-height: $height;
+            }
+        }
+        .transparent{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 100%;
+            width:100%;
+            opacity: .0;
+        }
+    }
+    ul{
+        font-size:15px;
+        $height: 40px;
+        .Link{
+            color: black;
+            text-decoration-line: none;
+            li{
+                padding-left:51px;
+                line-height: $height;
+                background-color: rgb(228, 210, 183);
+            }
+    }
+    
+    }
+}
+
+.HeaderMenubar{
+    $height:40px;
+    height:$height;
+    width: 100%;
+    padding-top:20px;
+    padding-bottom: 20px;
+    display: flex;
+    div{
+        height: $height;
+        width: $height;
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 50%;
+        border:2px solid rgb(226, 196, 150);
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    h1{
+        flex:1;
+        line-height: $height;
+        font-size: 26px;
+        color: rgb(226, 196, 150);
+    }
+}
