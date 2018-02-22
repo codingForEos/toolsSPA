@@ -1,6 +1,7 @@
 .RightSide{
     position: relative;
     height: 100%;
+    background-color: blanchedalmond;
     .HeaderMenu{
         $height:60px;
         height: $height;
@@ -12,8 +13,13 @@
             left: 0px;
             top:0px;
             padding-left: 20px;
+            padding-right: 20px;
+            transform: rotate(0deg);
+            transition: transform 300ms ease-in-out;
+            height: 100%;
             i{
                 font-size: 25px;
+                
             }
         }
         .user{

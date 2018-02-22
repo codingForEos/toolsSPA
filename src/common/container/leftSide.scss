@@ -1,28 +1,47 @@
 .LeftSide{
-    user-select: none
+    user-select: none;
+    width: 200px;
+    overflow: hidden;
+    transition: width 300ms ease-in-out;
+    position: relative;
+    height: 100%;
+    background-color: rgb(145, 139, 99);
 }
 
 .Menubar{
+    white-space:nowrap;    
     div{
         position: relative;
         div{
             font-size:15px;
-            $height: 40px;
+            $height: 45px;
             height: $height;
             display: flex;
             .MenuListLogo{
                 padding-left:25px;
                 padding-right: 10px;
                 line-height: $height;
-            }
-            .MenuListName{
-                line-height: $height;
-                text-align: left;
                 flex:1;
+                transform: scale(1);
+                transition: transform 300ms ease-in-out;
             }
-            .MenuListTip{
-                padding-right: 10px;
-                line-height: $height;
+            div{
+                flex:7;
+                overflow: hidden;
+                transition: flex 300ms ease-in-out;
+                .MenuListName{
+                    line-height: $height;
+                    text-align: left;
+                    padding-left: 10px;
+                }
+                .MenuListTip{
+                    display: inline-block;
+                    line-height: $height;
+                    text-align: right;
+                    i{
+                        padding-right: 15px;
+                    }
+                }
             }
         }
         .transparent{
@@ -35,15 +54,18 @@
         }
     }
     ul{
-        font-size:15px;
         $height: 40px;
+        font-size:15px;
         .Link{
             color: black;
             text-decoration-line: none;
             li{
                 padding-left:51px;
                 line-height: $height;
-                background-color: rgb(228, 210, 183);
+                height: $height;
+                overflow: hidden;
+                transition: height 300ms ease-in-out;
+                background-color:rgba(255, 255, 255, 0.338);
             }
     }
     
@@ -57,23 +79,74 @@
     padding-top:20px;
     padding-bottom: 20px;
     display: flex;
+    white-space:nowrap; 
     div{
+        flex:1;
         height: $height;
-        width: $height;
-        margin-left: 15px;
-        margin-right: 15px;
-        border-radius: 50%;
-        border:2px solid rgb(226, 196, 150);
-        img{
-            height: 100%;
-            width: 100%;
+        div{
+            transform:rotate(0deg);
+            opacity:1;
+            height: $height;
+            width: $height;
+            margin-left: 10px;
+            margin-right: 10px;
             border-radius: 50%;
+            border:2px solid rgb(226, 196, 150);
+            img{
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
         }
     }
     h1{
-        flex:1;
+        flex:2;
+        width: 160px;
+        overflow: hidden;
         line-height: $height;
         font-size: 26px;
-        color: rgb(226, 196, 150);
+        transition: flex 300ms ease-in-out;
+    }
+}
+
+.Skin{
+    position: absolute;
+    $height:18px;
+    text-align: right;
+    line-height: $height;
+    right: 3px;
+    bottom: 40px;
+    span{
+        width: 54px;
+        background-color: #CCC;
+        font-size: 10px;
+        color: white;
+        display: flex;
+        border-radius: ($height + 4) / 2;
+        padding: 2px;
+        span{
+            display: inline-block;
+            height: $height;
+            width: $height;
+            border-radius: 50%;
+            background-color: white;
+            flex:1;
+        }
+        .Dark{
+            flex:2;
+            text-align: center;
+            height: $height;
+            line-height: $height;
+            overflow: hidden;
+            transition: flex 200ms ease-in-out;
+        }
+        .Light{
+            flex:0;
+            text-align: center;
+            height: $height;
+            line-height: $height;
+            overflow: hidden;
+            transition: flex 200ms ease-in-out;
+        }
     }
 }
