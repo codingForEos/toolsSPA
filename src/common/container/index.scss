@@ -4,9 +4,11 @@
 }
 .left-side{
     height: 100%;
+    z-index: 1
 }
 .right-side{
     flex:1;
+    z-index: 0;
     height: 100%;
     border-left:20px solid rgb(250, 250, 231);
 }

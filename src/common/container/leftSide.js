@@ -22,11 +22,10 @@ const LeftSide1 = ({ onOf, skinOnof}) =>{
     return(
         <Transition in={onOf === 'MINI' ? true : false} timeout={0}>
             {(state) => (
-                <div className="LeftSide" style={{ ...transitionStyles[state],
-                    backgroundColor: skinOnof === "Dark" ? 'rgb(145, 139, 99)' :'blanchedalmond'}}>
+                <div className="LeftSide" style={{ ...transitionStyles[state]}}>
                     <HeaderMenubar />
                     <ul>
-                        {allMenu.map((menu) => <Menubar content={menu} mini={true} key={menu.url}/>)}
+                        {allMenu.map((menu) => <Menubar content={menu} mini={true} key={menu.url} />)}
                     </ul>
                     <SKin/>
                 </div>
@@ -83,36 +82,53 @@ const HeaderMenubar = connect(mapStateToPropsHMB)(HeaderMenubar1);
 class Menubar1 extends React.Component{
     constructor(props){
         super(props)
-        this.state = {spread:true}//默认情况下组件是不展开的
+        this.state = { spread: false, spreadMINI: false}//默认情况下组件是不展开的
         this.transitionStyles = {
             entering: { flex: '7' },
             entered: { flex: '0' },
         };
         this.transitionStyles1 = {
-            entering: { transform:'scale(1)' },
-            entered: { transform: 'scale(1.4)' },
+            entering: { transform:'scale(0.75)' },
+            entered: { transform: 'scale(1)' },
         };
         this.transitionStyles2 = {
             entering: { height: '40px' },
             entered: { height: '0px' },
         };
+        this.transitionStyles3 = {
+            entering: { opacity: '0',transform: 'scale(0)'},
+            entered: { opacity: '1', transform: 'scale(1)'},
+            exiting: { opacity: '1', transform: 'scale(1)'},
+            exited: { opacity: '0', transform: 'scale(0)'}
+        };
     }
     handleToggle = (e) =>{
-        // console.log('hahha');
         this.setState({spread:!this.state.spread});
+    }
+    handleOnmouseover = () =>{
+        if (this.props.onOf === "MINI") {
+            this.setState({ spreadMINI: true })
+        }
+    }
+    handleOnmouseout = () =>{
+        if(this.props.onOf === "MINI"){
+            this.setState({ spreadMINI:false})
+        }
     }
     render(){
         let { name, url, icon, children} = this.props.content;
         let spread = this.state.spread;
+        let spreadMINI = this.state.spreadMINI;
         let mini = this.props.mini;
         let onOf = this.props.onOf
         return(
-            <li className='Menubar'>
+            <li className='Menubar' onMouseOver={this.handleOnmouseover} onMouseOut={this.handleOnmouseout}>
                 <div>
                     <div>
                         <Transition in={onOf === 'MINI' ? true : false} timeout={0}>
                             {(state) => (
-                                <div className="MenuListLogo" style={{...this.transitionStyles1[state]}}><i className={icon}></i></div>
+                                <div className="MenuListLogo" 
+                                style={{...this.transitionStyles1[state]}}><i className={icon}></i></div>
                             )}
                         </Transition>
                         <Transition in={onOf === 'MINI' ? true : false} timeout={0}>
@@ -130,15 +146,30 @@ class Menubar1 extends React.Component{
                     <div className='transparent' onClick={this.handleToggle}></div>
                 </div>
                 {/* 子菜单 */}
-                <ul>
-                    {(typeof children !== 'undefined') &&
-                        <Transition in={(typeof children !== 'undefined') && (spread === true) && onOf === 'NORMAL' ? false : true} timeout={0}>
+                {/* NORMAL模式下菜单的时候显示的组件 */}
+                {(typeof children !== 'undefined') &&
+                    <ul className="Tipmuber">
+                        <Transition in={(spread === true) && onOf === 'NORMAL' ? false : true} timeout={0}>
                             {(state) => (
-                            (children.map((bar) => <Link className='Link' key={bar.name} to={bar.url}><li style={{ ...this.transitionStyles2[state] }}>{bar.name}</li></Link>))
+                                (children.map((bar) => <Link className='Link' key={bar.name} to={bar.url}><li style={{ ...this.transitionStyles2[state] }}>{bar.name}</li></Link>))
                             )}
                         </Transition>
-                    }
-                </ul>
+                    </ul>
+                }
+                {/* MINI模式下显示组件的方式 */}
+                {/* NORMAL模式下菜单的时候显示的组件 */}
+                {(typeof children !== 'undefined') && 
+                    <Transition in={(spreadMINI === true) && onOf === 'MINI' ? true : false} timeout={{enter:0,exit:100}}>
+                    {(state) => (
+                        <ul className="TipmuberMINI"
+                            onMouseOver={this.handleOnmouseover}
+                            onMouseOut={this.handleOnmouseout}
+                            style={{ ...this.transitionStyles3[state] }}>
+                                {(children.map((bar) => <Link className='Link' key={bar.name} to={bar.url}><li>{bar.name}</li></Link>))}
+                        </ul>
+                    )}
+                    </Transition>
+                }
             </li>
         )
     }

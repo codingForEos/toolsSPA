@@ -14,33 +14,26 @@ import "./rightSide.scss";
 
 // 经路由过来的组件
 import { todoList } from "../todoContainer/index.js"
-const RightSide1 = ({ skinOnof }) => {
+export const RightSide = () => {
     return (
-        <div className="RightSide" 
-            style={{ backgroundColor: skinOnof === "Dark" ? "rgb(145, 139, 99)" :"blanchedalmond"}}>
+        <div className="RightSide" >
             <CHeaderMenu />
             <div className='content'>
-                <Switch>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/tools' component={Tools}/>
-                    <Route path='/editor' component={Editor}/>
-                    <Route path='/todoList' component={todoList}/>
-                    <Route path='/album' component={Album}/>
-                    <Route path='/searchEngine' component={SearchEngine}/>
-                    <Route path='/searchEngine' component={Tools}/>
-                    <Route path='/todo' component={Todo}/>
+                <Route path='/music' component={Music}/>
+                <Route path='/tools' component={Tools}/>
+                <Route path='/editor' component={Editor}/>
+                <Route path='/todoList' component={todoList}/>
+                <Route path='/album' component={Album}/>
+                <Route path='/searchEngine' component={SearchEngine}/>
+                <Route path='/searchEngine' component={Tools}/>
+                <Route path='/todo' component={Todo}/>
                     {/* 调试方便直接跳转到需要调试的页面 */}
                     {/* <Redirect from="/" to="/todoList" /> */}
-                </Switch>
             </div>
             <FooterBar/>
         </div>
     )
 }
-const mapStateToPropsRS = ( state ) =>(
-    { skinOnof: state.ToggleSkin }
-)
-export const RightSide = connect(mapStateToPropsRS)(RightSide1);
 
 //<HeaderMenu > 头部组件
 const HeaderMenu = ({ onOf,handleToogle }) => {

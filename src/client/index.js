@@ -14,7 +14,7 @@ import { createStore } from "redux";
 import './index.scss'
 
 import {rootReducer} from '../common/reducers/index.js';
-import Container from '../common/container/index.js';
+import {Container} from '../common/container/index.js';
 
 const store = createStore(rootReducer);
 

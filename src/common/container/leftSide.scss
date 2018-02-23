@@ -1,15 +1,14 @@
 .LeftSide{
     user-select: none;
     width: 200px;
-    overflow: hidden;
     transition: width 300ms ease-in-out;
     position: relative;
     height: 100%;
-    background-color: rgb(145, 139, 99);
 }
 
 .Menubar{
-    white-space:nowrap;    
+    white-space:nowrap;  
+    position: relative;
     div{
         position: relative;
         div{
@@ -18,12 +17,15 @@
             height: $height;
             display: flex;
             .MenuListLogo{
-                padding-left:25px;
+                padding-left:18px;
                 padding-right: 10px;
                 line-height: $height;
                 flex:1;
-                transform: scale(1);
+                transform: scale(0.75);
                 transition: transform 300ms ease-in-out;
+                i{
+                    font-size: 24px;
+                }
             }
             div{
                 flex:7;
@@ -44,16 +46,16 @@
                 }
             }
         }
-        .transparent{
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            height: 100%;
-            width:100%;
-            opacity: .0;
-        }
+    .transparent{
+        z-index: 2;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width:100%;
+    } 
     }
-    ul{
+    .Tipmuber{
         $height: 40px;
         font-size:15px;
         .Link{
@@ -67,8 +69,33 @@
                 transition: height 300ms ease-in-out;
                 background-color:rgba(255, 255, 255, 0.338);
             }
+        }
     }
-    
+    .TipmuberMINI{
+        z-index: 1;
+        position: absolute;
+        left: 60px;
+        margin-left: 20px;
+        top: - 0px;
+        $height: 40px;
+        font-size:15px;
+        width: 200px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgba(66, 66, 66, 0.952);
+        transform: scale(0);
+        opacity: 0;
+        transition: transform 200ms ease-in-out, opacity 800ms ease-in-out;
+        .Link{
+            color: black;
+            text-decoration-line: none;
+            li{
+                padding-left:51px;
+                line-height: $height;
+                height: $height;
+                background-color:rgba(255, 255, 255, 0.377);
+            }
+        }
     }
 }
 
