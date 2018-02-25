@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {BrowserRouter as Router,
+import {Router,
         Route,
         Link,
         Switch,
@@ -10,6 +10,8 @@ import {BrowserRouter as Router,
 
 import {Provider} from 'react-redux';
 import { createStore } from "redux";
+
+import history from '../common/utils/history.js';
 
 import './index.scss'
 
@@ -21,11 +23,12 @@ const store = createStore(rootReducer);
 // 创建监听state函数，监听state状态的改变
 let unsubscribe = store.subscribe(()=>console.log(store.getState()));
 unsubscribe();
-// react渲染
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
-            <Route to='/' component={Container}/>
+        <Router history={history}>
+            <Switch className="Router">
+                <Route  path='/' component={Container}/>
+            </Switch>
         </Router>
     </Provider>
     ,document.getElementById('app'));
