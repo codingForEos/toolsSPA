@@ -36,7 +36,9 @@ module.exports={
     // 2.保证index.html中引用的js文件的路径恰好是能够访问到webpack-dev-Server在publicPath路径下生产的。js文件，这样才能实现动态刷新
     devServer:{
         contentBase: path.resolve(__dirname,'./dist'),
-        port:9000,
+        host: "0.0.0.0", //这是此参数，外部也能访问。
+        disableHostCheck: true,
+        port:8080,
         hot:true,
         open:true,
     }
